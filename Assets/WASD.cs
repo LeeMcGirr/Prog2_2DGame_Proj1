@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class WASD : MonoBehaviour
 {
+    public float collectedScore = 0f;
     //accel is public so we can fine tune the player controller from the editor
-    public float accel = 1f;
+    //separate horizontal and vertical accelerations
+    public float horAccel = 1f;
+    public float vertAccel = .1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +25,11 @@ public class WASD : MonoBehaviour
     {
         //first let's call our Dir() function to find out what the current player inputs are
         Vector3 currentDir = Dir();
+        //multiply our horizontal and vertical move separately
+        currentDir.x *= horAccel;
+        currentDir.y *= vertAccel;
         //throw it into Translate, multiply by our acceleration variable
-        transform.Translate(currentDir*accel);
+        transform.Translate(currentDir);
     }
     //get the inputs of the WASD / keyboard / joysticks
     //this function gets the overall direction and returns it as a vector3
@@ -38,5 +44,18 @@ public class WASD : MonoBehaviour
         Vector3 myDir = new Vector3(x, y, 0);
         //then we return that value
         return myDir;
+    }
+
+    //checking for enemy or collectible collisions
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("player collided with " + collision.gameObject.name);
+
+        //when we collide with something collectible, destroy it and increment the player score
+        if (collision.gameObject.tag == "Collectible")
+        {
+            Destroy(collision.gameObject);
+            collectedScore++;
+        }
     }
 }
