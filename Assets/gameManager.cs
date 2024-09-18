@@ -26,6 +26,8 @@ public class gameManager : MonoBehaviour
     {
         myPlayer = GameObject.FindGameObjectWithTag("Player");
         playerScript = myPlayer.GetComponent<WASD>();
+
+        //invoke repeating is a method that calls a function and runs it every X seconds, with a Y second delay to start
         InvokeRepeating("CollectibleSpawn",spawnInterval/2,spawnInterval);
     }
         // Update is called once per frame
@@ -57,7 +59,9 @@ public class gameManager : MonoBehaviour
 
     void CollectibleSpawn()
     {
+        //generate a random XY coordinate to spawn the collectible at
         Vector3 targetPos = new Vector3(Random.Range(spawnBox.x,spawnBox.y), Random.Range(spawnBox.z,spawnBox.w), 0);
+        //instantiate can also be called with a vector3 for target spawn location, and a quaternion for rotation (just use Quaternion.identity)
         Instantiate(myCollectible, targetPos, Quaternion.identity);
         Debug.Log("collectible spawn");
     }

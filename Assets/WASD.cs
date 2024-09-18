@@ -9,10 +9,19 @@ public class WASD : MonoBehaviour
     //separate horizontal and vertical accelerations
     public float horAccel = 1f;
     public float vertAccel = .1f;
+    public float jumpForce = 30f;
+    public float jumpCooldown = 2f;
+    public float coyoteTime = 1f;
+
+    public bool canJump = true;
     // Start is called before the first frame update
+    Rigidbody2D myRB;
+
     void Start()
     {
-        
+        //find the player rigidbody component
+        myRB = GetComponent<Rigidbody2D>();
+        canJump = false;
     }
     // Update is called once per frame
     void Update()
@@ -29,7 +38,14 @@ public class WASD : MonoBehaviour
         currentDir.x *= horAccel;
         currentDir.y *= vertAccel;
         //throw it into Translate, multiply by our acceleration variable
-        transform.Translate(currentDir);
+        myRB.AddForce(currentDir);
+
+        //when the player hits space, JUMP
+        if(Input.GetAxis("Jump") > .05f && canJump)
+        {
+            StartCoroutine(JumpCycle(jumpCooldown));
+        }
+
     }
     //get the inputs of the WASD / keyboard / joysticks
     //this function gets the overall direction and returns it as a vector3
@@ -57,5 +73,38 @@ public class WASD : MonoBehaviour
             Destroy(collision.gameObject);
             collectedScore++;
         }
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        canJump = true;
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("exited collision");
+        StartCoroutine(CoyoteJump(coyoteTime));
+    }
+
+    public void Jump()
+    {
+        //when we call the Jump, add an upwards force
+        myRB.AddForce(Vector3.up*jumpForce);
+    }
+
+    public IEnumerator JumpCycle(float time)
+    {
+        //code above this line will execute IMMEDIATELY
+        Jump();
+        canJump = false;
+        yield return new WaitForSeconds(time); //wait for exactly TIME seconds
+        canJump = true;
+        //code below this line will execute AFTER the TIME
+    }
+
+    public IEnumerator CoyoteJump(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canJump = false;
     }
 }
