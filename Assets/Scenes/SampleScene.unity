@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 2514351653886201720, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7357837150791626960, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1661,6 +1665,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 3561487419536740481, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.221
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575413887323906349, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603411709198339254, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2850001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603411709198339254, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16400003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603411709198339254, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999874
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603411709198339254, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.005014112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603411709198339254, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.575
+      objectReference: {fileID: 0}
     - target: {fileID: 7357837150791626960, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2142,6 +2174,10 @@ PrefabInstance:
     - target: {fileID: 2514351653886201720, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
       propertyPath: m_Name
       value: Square (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514351653886201720, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7357837150791626960, guid: ae5fcfb1cdf006746861d5f11b529734, type: 3}
       propertyPath: m_RootOrder
